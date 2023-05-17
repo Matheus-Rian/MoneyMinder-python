@@ -7,7 +7,7 @@ class Transactions:
     if (not(self.items.get(category))):
       self.items[category] = [transaction]
     else:
-      if (not(self.transactionAlreadyExists(category, transaction))):
+      if (not(self.transactionNameAlreadyExists(category, transaction))):
         self.items[category].append(transaction)
 
   def removeByName(self, name):
@@ -25,7 +25,7 @@ class Transactions:
   def get_items(self):
     return self.items
   
-  def transactionAlreadyExists(self, category, transaction):
+  def transactionNameAlreadyExists(self, category, transaction):
     for value in self.items[category]:
       if (value['name'] == transaction.get('name')):
         return True
