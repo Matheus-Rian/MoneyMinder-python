@@ -10,6 +10,7 @@ objMock = {
 category = 'Casa'
 transaction = { 'name': 'Fogão', 'value': 1500 }
 transaction2 = { 'name': 'TV', 'value': 2500 }
+transaction3 = { 'name': 'TV', 'value': 2500 }
 
 def makeSut():
   transactions = Transactions()
@@ -19,6 +20,12 @@ def makeSut():
 
 def test_add_transaction():
   transactions = makeSut()
+  assert transactions.size() == 2
+
+def test_not_allow_add_transaction_with_existing_name():
+  transactions = makeSut()
+  transactions.add(category, transaction3)
+  print(transactions.get_items())
   assert transactions.size() == 2
 
 def test_get_transactions():
