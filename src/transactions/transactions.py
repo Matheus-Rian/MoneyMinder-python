@@ -4,10 +4,11 @@ class Transactions:
     self.sizeItems = 0
 
   def add(self, category, transaction):
-    if (self.items.get(category)):
-      self.items[category].append(transaction)
-    else:
+    if (not(self.items.get(category))):
       self.items[category] = [transaction]
+    else:
+      if (not(self.transactionAlreadyExists(category, transaction))):
+        self.items[category].append(transaction)
 
   def removeByName(self, name):
     for key in self.items.keys():
@@ -23,3 +24,9 @@ class Transactions:
   
   def get_items(self):
     return self.items
+  
+  def transactionAlreadyExists(self, category, transaction):
+    for value in self.items[category]:
+      if (value['name'] == transaction.get('name')):
+        return True
+    return False
