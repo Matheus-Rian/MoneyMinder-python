@@ -10,16 +10,17 @@ class Transactions:
       if (not(self.transactionNameAlreadyExists(category, transaction))):
         self.items[category].append(transaction)
 
-  def removeByName(self, name):
-    for key in self.items.keys():
-      for i, value in enumerate(self.items[key]):
-        if (value['name'] == name):
-          self.items[key].pop(i)
+  def removeByName(self, category, name):
+    index = self.findIndexTransactionByName(category, name)
+    self.items[category].pop(index)
+
+  def updateByName(self, category, name, transaction):
+    index = self.findIndexTransactionByName(category, name)
+    self.items[category][index] = transaction
 
   def size(self):
     for key in self.items.keys():
       self.sizeItems += len(self.items[key])
-
     return self.sizeItems
   
   def get_items(self):
@@ -30,3 +31,8 @@ class Transactions:
       if (value['name'] == transaction.get('name')):
         return True
     return False
+  
+  def findIndexTransactionByName(self, category, name):
+    for i, value in enumerate(self.items[category]):
+      if (value['name'] == name):
+        return i
