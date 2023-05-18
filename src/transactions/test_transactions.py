@@ -43,7 +43,17 @@ def test_remove_by_name():
   transactions.removeByName(category, 'TV')
   assert transactions.size() == 1
 
+def test_remove_by_name_not_exists():
+  transactions = makeSut()
+  v = transactions.removeByName(category, 'TV2')
+  assert v == 'Nome não existe'
+
 def test_update_by_name():
   transactions = makeSut()
   transactions.updateByName(category, 'TV', {'name': 'TV', 'value': 1500})
   assert objMockUpdated == transactions.get_items()
+
+def test_update_by_name_not_exists():
+  transactions = makeSut()
+  v = transactions.updateByName(category, 'TV2', {'name': 'TV2', 'value': 1500})
+  assert v == 'Nome não existe'
