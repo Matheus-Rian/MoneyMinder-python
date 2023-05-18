@@ -7,6 +7,13 @@ objMock = {
   ]
 }
 
+objMockUpdated = {
+  'Casa': [
+    {'name': 'Fogão', 'value': 1500}, 
+    {'name': 'TV', 'value': 1500}
+  ]
+}
+
 category = 'Casa'
 transaction = { 'name': 'Fogão', 'value': 1500 }
 transaction2 = { 'name': 'TV', 'value': 2500 }
@@ -25,7 +32,6 @@ def test_add_transaction():
 def test_not_allow_add_transaction_with_existing_name():
   transactions = makeSut()
   transactions.add(category, transaction3)
-  print(transactions.get_items())
   assert transactions.size() == 2
 
 def test_get_transactions():
@@ -34,5 +40,10 @@ def test_get_transactions():
 
 def test_remove_by_name():
   transactions = makeSut()
-  transactions.removeByName('TV')
+  transactions.removeByName(category, 'TV')
   assert transactions.size() == 1
+
+def test_update_by_name():
+  transactions = makeSut()
+  transactions.updateByName(category, 'TV', {'name': 'TV', 'value': 1500})
+  assert objMockUpdated == transactions.get_items()
