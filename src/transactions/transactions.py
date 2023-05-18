@@ -12,17 +12,18 @@ class Transactions:
 
   def removeByName(self, category, name):
     index = self.findIndexTransactionByName(category, name)
-    if (not(index)):
-      return 'Nome não existe'
-
-    self.items[category].pop(index)
+    if (index != False):
+      self.items[category].pop(index)
+      return
+    print('Nome não existe!')
+  
 
   def updateByName(self, category, name, transaction):
     index = self.findIndexTransactionByName(category, name)
-    if (not(index)):
-      return 'Nome não existe'
-
-    self.items[category][index] = transaction 
+    if (index != False):
+      self.items[category][index] = transaction
+      return
+    print('Nome não existe!')
 
   def size(self):
     for key in self.items.keys():
