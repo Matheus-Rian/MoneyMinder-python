@@ -1,71 +1,44 @@
-escolha_de_funcao = 0
-while (escolha_de_funcao != '4'):
-                                                                                                          #Escolha da função primária
+def menu1escolha (escolha_de_funcao):
     print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-    print("=\t\t\t         Menu\t\t\t              =")
+    print("\t\t           Menu --> " + menu0[int(escolha_de_funcao) -1])
     print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-    print("Digite o número da ação que deseja realizar: \n[1]Transações \n[2]Filtrar Por Categoria \n[3]Porquinho \n[4]Sair\n")
-    escolha_de_funcao = input()
-    
-    #Função no.1 escolhida
-    if(escolha_de_funcao == '1'):
-        #Escolha da função secundária (função primária = Transações)
-        print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-        print("=\t\t\t   Menu --> Transações\t\t\t      =")
-        print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-        print("Digite o número da ação que deseja realizar: \n[1]Ler Todas As Transações \n[2]Adicionar Transação \n[3]Atualizar Transação Existente \n[4]Deletar Transação\n")
-        escolha_de_funcao_transacoes = input()
-        
-        #Função secundária escolhida:'Ler Todas As Transações'
-        if(escolha_de_funcao_transacoes == '1'):
-            print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-            print("=\t   Menu --> Transações --> Ler Todas As Transações\t      =")
-            print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-        
-        #Função secundária escolhida:'Adicionar Transação'
-        if(escolha_de_funcao_transacoes == '2'):
-            print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-            print("=\t     Menu --> Transações --> Adicionar Transação\t      =")
-            print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-
-        #Função secundária escolhida:'Atualizar Transação'
-        if(escolha_de_funcao_transacoes == '3'):
-            print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-            print("=\t     Menu --> Transações --> Atualizar Transação\t      =")
-            print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-
-        #Função secundária escolhida:'Deletar Transação'
-        if(escolha_de_funcao_transacoes == '4'):
-            print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-            print("=\t        Menu --> Transações --> Deletar Transação\t      =")
-            print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+def menu2escolha (escolha_de_funcao, escolha_de_funcao1):
+    print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    print("\t        Menu --> " + menu0[int(escolha_de_funcao) -1] + menu1[int(escolha_de_funcao1) - 1])
+    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+def menu3escolha (escolha_de_funcao, escolha_de_funcao1, escolha_de_funcao2):
+    print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    print("Menu --> " + menu0[int(escolha_de_funcao) -1] + menu1[int(escolha_de_funcao1) - 1] + menu2[int(escolha_de_funcao2) -1])
+    print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
 
 
-    #Função no.2 escolhida
-    if(escolha_de_funcao == '2'):
-        print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-        print("=\t\t   Menu --> Filtrar por Categoria\t\t      =")
-        print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+menu0 = ["Transações", "Filtrar Por Categoria", "Porquinho"]
+print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+print("\t\t\t         Menu")
+print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+print("Digite o número da ação que deseja realizar: \n[1]Transações \n[2]Filtrar Por Categoria \n[3]Porquinho \n")
+escolha_de_funcao = input()
 
-    #Função no.3 escolhida
-    if(escolha_de_funcao == '3'):
-        #Escolha da função secundária (função primária = Porquinho)
-        print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-        print("=\t\t\t   Menu --> Porquinho\t\t\t      =")
-        print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-        print("Digite o número da ação que deseja realizar: \n[1]Criar Um Porquinho \n[2]Visualizar um Porquinho existente \n[3]Deletar Um Porquinho\n")
-        escolha_de_funcao_porquinho = input()
+if (escolha_de_funcao == "1"):
+    menu1 = [" --> Ler todas as transações", " --> Adicionar uma transação", " --> Atualizar transação existente", " --> Deletar uma transação"]
+    menu1escolha(escolha_de_funcao)
+    print("Digite o número da ação que deseja realizar: \n[1]Ler todas as transações \n[2]Adicionar uma transação \n[3]Atualizar transação existente \n[4]Deletar uma transação \n")
+    escolha_de_funcao1 = input()
+    menu2escolha(escolha_de_funcao, escolha_de_funcao1)
 
-        #Função secundária escolhida:'Criar um Porquinho'
-        if(escolha_de_funcao_porquinho == '1'):
-            print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-            print("=\t       Menu --> Porquinho --> Criar Um Porquinho\t      =")
-            print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-
-        
-
-    #Caso o valor seja <1 ou >4 o programa vai mostrar essa frase e rodar novamente
-    if(escolha_de_funcao < 1 or escolha_de_funcao > 4):
-        print("Valor de escolha inválido! Por favor, digite um valor válido dessa vez.")
-
-print("Programa Encerrado\n")
+if (escolha_de_funcao == "2"):
+    menu1 = [" "]
+    menu1escolha(escolha_de_funcao)
+if(escolha_de_funcao == "3"):
+    menu1 = [" --> Criar porquinho", " --> Visualizar porquinho", " --> Deletar porquinho"]
+    menu1escolha(escolha_de_funcao)
+    print("Digite o número da ação que deseja realizar: \n[1]Criar porquinho \n[2]Visualizar porquinho \n[3]Deletar porquinho \n")
+    escolha_de_funcao1 = input()
+    if(escolha_de_funcao1 == "2"):
+        menu2 = [" --> Adicionar dinheiro", " --> Remover dinheiro", " --> Visualizar valor total"]
+        menu2escolha(escolha_de_funcao, escolha_de_funcao1)
+        print("Digite o número da ação que deseja realizar: \n[1]Adicionar dinheiro \n[2]Remover dinheiro \n[3]Visualizar valor total \n")
+        escolha_de_funcao2 = input()
+        menu3escolha(escolha_de_funcao, escolha_de_funcao1, escolha_de_funcao2)
+    else:
+        menu2escolha(escolha_de_funcao, escolha_de_funcao1)
