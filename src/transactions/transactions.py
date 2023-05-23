@@ -3,14 +3,20 @@ class Transactions:
     self.items = {}
     self.sizeItems = 0
 
-  def add(self, category, transaction):
+  def add(self):
+    category = self.captureCategory()
+    transaction = self.captureNewTransaction()
+
     if (not(self.items.get(category))):
       self.items[category] = [transaction]
     else:
       if (not(self.transactionNameAlreadyExists(category, transaction))):
         self.items[category].append(transaction)
 
-  def removeByName(self, category, name):
+  def removeByName(self):
+    category = self.captureCategory()
+    name = self.captureName()
+
     index = self.findIndexTransactionByName(category, name)
     if (index != False):
       self.items[category].pop(index)
@@ -18,7 +24,11 @@ class Transactions:
     print('Nome não existe!')
   
 
-  def updateByName(self, category, name, transaction):
+  def updateByName(self):
+    category = self.captureCategory()
+    name = self.captureName()
+    transaction = self.captureNewTransaction()
+
     index = self.findIndexTransactionByName(category, name)
     if (index != False):
       self.items[category][index] = transaction
@@ -44,3 +54,14 @@ class Transactions:
       if (value['name'] == name):
         return i
     return False
+  
+  def captureCategory(self):
+    return input('Digite a categoria: ')
+
+  def captureName(self):
+    return input('Digite o nome: ')
+
+  def captureNewTransaction(self):
+    name = input('Digite um novo nome: ')
+    value = float(input('Digite um novo valor: '))
+    return { 'name': name, 'value': value }
