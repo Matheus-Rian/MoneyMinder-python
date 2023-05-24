@@ -30,7 +30,7 @@ def menu_principal():
     if (primeira_escolha_de_funcao == "2"):
         segundo_menu(primeira_escolha_de_funcao)
         return ['Filtrar', '1']
-        
+
     if(primeira_escolha_de_funcao == "3"):
         opcoes_do_segundo_menu = [" --> Criar porquinho", " --> Visualizar porquinho", " --> Deletar porquinho"]
         segundo_menu(primeira_escolha_de_funcao)
@@ -44,3 +44,4 @@ def menu_principal():
             quarto_menu(primeira_escolha_de_funcao, segunda_escolha_de_funcao, terceira_escolha_de_funcao)
         else:
             terceiro_menu(primeira_escolha_de_funcao, segunda_escolha_de_funcao)
+            return ['Porquinho',segunda_escolha_de_funcao]
