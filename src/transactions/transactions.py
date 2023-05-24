@@ -9,6 +9,7 @@ class Transactions:
 
     if (not(self.items.get(category))):
       self.items[category] = [transaction]
+      return 'Adicionada com sucesso'
     else:
       if (not(self.transactionNameAlreadyExists(category, transaction))):
         self.items[category].append(transaction)
@@ -23,7 +24,6 @@ class Transactions:
       return
     print('Nome não existe!')
   
-
   def updateByName(self):
     category = self.captureCategory()
     name = self.captureName()
@@ -34,6 +34,13 @@ class Transactions:
       self.items[category][index] = transaction
       return
     print('Nome não existe!')
+
+  def filter(self):
+    try:
+      category = self.captureCategory()
+      return self.items[category]
+    except:
+      print('Categoria não existe!')
 
   def size(self):
     for key in self.items.keys():

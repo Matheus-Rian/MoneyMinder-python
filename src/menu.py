@@ -28,8 +28,8 @@ def menu_principal():
         return ['Transações', segunda_escolha_de_funcao]
 
     if (primeira_escolha_de_funcao == "2"):
-        opcoes_do_segundo_menu = [" "]
         segundo_menu(primeira_escolha_de_funcao)
+        return ['Filtrar', '1']
         
     if(primeira_escolha_de_funcao == "3"):
         opcoes_do_segundo_menu = [" --> Criar porquinho", " --> Visualizar porquinho", " --> Deletar porquinho"]
