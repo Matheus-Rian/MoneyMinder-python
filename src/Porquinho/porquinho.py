@@ -2,48 +2,43 @@ class Porquinho:
 	def __init__(self):
 		self.arq = "porquinho.csv"
 		self.items = self.ler_do_csv()
-		self.tamanho_items = 0
-
 	def criar_porquinho(self):
 		nome = input("Digite o nome do porquinho: ")
 		if nome in self.items:
-			print("Porquinho existente")
+			return "Porquinho já existe"
 		else:
 			self.items[nome] = 0
-
+			self.salvar_em_csv()
+			return "Porquinho adicionado com sucesso"
 	def update_valor(self):
 		nome = input("Digite o nome do porquinho: ")
 		if nome in self.items:
 			valor = float(
 				input(f"Deseja adicionar qual valor para {nome}? Se quiser remover, digite com o '-' na frente do valor. ")
-			)
+				)
 			self.items[nome] += valor
 			self.salvar_em_csv()
-			print(f'O valor atual do porquinho é: {self.items[nome]}')
+			return (f'O valor atual do porquinho é: {self.items[nome]}')
 		else:
-			print(f"Porquinho '{nome}' não encontrado.")
-	
-	def tamanho(self):
-		self.tamanho_items = len(self.items)
-		return self.tamanho_items
-
+			return (f"Porquinho '{nome}' não encontrado.")
 	def visualizar_nomes(self):
+		nomes=[]
+		self.salvar_em_csv()
 		for nome in self.items.keys():
-			print(nome)
-		
-	def remover_nome(self, nome):
-		if nome in self.items:
-			del self.items[nome]
-			print("Nome removido com sucesso.")
+			nomes.append(nome)
+		return nomes
+	def remover_nome(self):
+		remove= input("Voce deseja remover qual porquinho? ")
+		if remove in self.items:
+			del self.items[remove]
 			self.salvar_em_csv()		
+			return "Nome removido com sucesso."
 		else:
-			print("Nome não encontrado.")
-
+			return ("Nome não encontrado.")
 	def salvar_em_csv(self):
 		with open(self.arq, 'w') as file:
 			for nome, valor in self.items.items():
 				file.write(f"{nome},{valor}\n")
-
 	def ler_do_csv(self):
 		items = {}
 		try:
