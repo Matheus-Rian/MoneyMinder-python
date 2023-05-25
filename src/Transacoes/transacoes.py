@@ -5,20 +5,23 @@ class Transacoes:
     self.itens = self.ler_no_arquivo()
 
   def adicionar(self):
-    categoria = self.input_categoria()
-    transacao = self.input_nova_transacao()
+    try:
+      categoria = self.input_categoria()
+      transacao = self.input_nova_transacao()
 
-    if (not(self.itens.get(categoria))):
-      self.itens[categoria] = [transacao]
-      self.escrever_no_arquivo()
-      print('Adicionada com sucesso')
-    else:
-      if (not(self.nome_ja_existe(categoria, transacao))):
-        self.itens[categoria].append(transacao)
+      if (not(self.itens.get(categoria))):
+        self.itens[categoria] = [transacao]
         self.escrever_no_arquivo()
         print('Adicionada com sucesso')
-        return
-      print('Falha na adição. Tente novamente!')
+      else:
+        if (not(self.nome_ja_existe(categoria, transacao))):
+          self.itens[categoria].append(transacao)
+          self.escrever_no_arquivo()
+          print('Adicionada com sucesso')
+          return
+        print('Falha na adição. Tente novamente!')
+    except:
+      print('Algo inesperado aconteceu. Tente novamente \n')
 
   def remover_pelo_nome(self):
     categoria = self.input_categoria()
@@ -32,16 +35,19 @@ class Transacoes:
       print('Nome não encontrado...')
 
   def atualizar_pelo_nome(self):
-    categoria = self.input_categoria()
-    nome = self.input_nome()
-    transacao = self.input_nova_transacao()
+    try:
+      categoria = self.input_categoria()
+      nome = self.input_nome()
+      transacao = self.input_nova_transacao()
 
-    try: 
-      index = self.encontrar_index_pelo_nome(categoria, nome)
-      self.itens[categoria][index] = transacao
-      self.escrever_no_arquivo()
+      try: 
+        index = self.encontrar_index_pelo_nome(categoria, nome)
+        self.itens[categoria][index] = transacao
+        self.escrever_no_arquivo()
+      except:
+        print('Nome não encontrado...')
     except:
-      print('Nome não encontrado...')
+      print('Algo inesperado aconteceu. Tente novamente \n')
 
   def filtrar(self):
     try:
@@ -85,13 +91,16 @@ class Transacoes:
     return { 'nome': nome, 'valor': valor }
     
   def formatar_itens(self):
-    for chave in self.itens.keys():
-      print(f'Categoria: {chave}')
-      print('(Nome - Valor) \n')
-      for item in self.itens[chave]:
-        print(f"{item['nome']} - R$ {item['valor']} \n")
-      print('---------- \n')
-    
+    try:
+      for chave in self.itens.keys():
+        print(f'Categoria: {chave}')
+        print('(Nome - Valor) \n')
+        for item in self.itens[chave]:
+          print(f"{item['nome']} - R$ {item['valor']} \n")
+        print('---------- \n')
+    except:
+      print('Nenhuma transação adicionada \n')
+
   def escrever_no_arquivo(self):
     with open(self.arquivoCSV, 'w') as file:
       for categoria in self.itens:

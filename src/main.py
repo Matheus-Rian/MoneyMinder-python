@@ -10,25 +10,25 @@ while True:
   except:
     break
 
-  transactions = t.Transacoes()
+  transacoes = t.Transacoes()
   porquinho = p.Porquinho()
 
   opcoes = {
     'Transações': {
-      '1': transactions.pegar_transacoes,
-      '2': transactions.adicionar,
-      '3': transactions.atualizar_pelo_nome,
-      '4': transactions.remover_pelo_nome,
+      '1': transacoes.pegar_transacoes,
+      '2': transacoes.adicionar,
+      '3': transacoes.atualizar_pelo_nome,
+      '4': transacoes.remover_pelo_nome,
     },
     'Filtrar': {
-      '1': transactions.filtrar
+      '1': transacoes.filtrar
     },
     'Porquinho': {
       '1': porquinho.criar_porquinho,
-      '2': porquinho.update_valor,
+      '2': porquinho.atualizar_valor,
       '3': porquinho.visualizar_nomes,
       '4': porquinho.remover_nome
     }
   }
 
-  print(opcoes[tipo][operacao]())
+  opcoes[tipo][operacao]()
