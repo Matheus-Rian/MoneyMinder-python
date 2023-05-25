@@ -19,7 +19,7 @@ class Transacoes:
           self.escrever_no_arquivo()
           print('Adicionada com sucesso')
           return
-        print('Falha na adição. Tente novamente!')
+        print('Falha na adição. Já existe uma transação com esse nome!')
     except:
       print('Algo inesperado aconteceu. Tente novamente \n')
 
