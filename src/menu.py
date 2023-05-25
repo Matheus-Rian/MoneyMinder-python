@@ -14,6 +14,7 @@ def menu_principal():
         #Primeiro menu, onde o usuário ainda não escolheu nada
         #A partir do número que o usuário inserir na variável "primeira_escolha_do_usuário", será correspondentemente acessado no vetor "opções_do_primeiro_menu" 
         opcoes_do_primeiro_menu = ["Transações", "Filtrar Por Categoria", "Porquinho"]
+        print('[CTRL + D] - FINALIZAR O PROGRAMA')
         print("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
         print("\t\t\t         Menu")
         print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
@@ -41,6 +42,9 @@ def menu_principal():
             print("Digite o número da ação que deseja realizar: \n[1]Criar porquinho \n[2]Atualizar porquinho \n[3]Visualizar porquinhos \n[4]Deletar porquinho \n")
             segunda_escolha_do_usuario = int(input())
             terceiro_menu(primeira_escolha_do_usuario, segunda_escolha_do_usuario)
-            return ['Porquinho',str(segunda_escolha_do_usuario)]
-    except:
+            return ['Porquinho', str(segunda_escolha_do_usuario)]
+    except ValueError:
         print("Você digitou um valor inválido, tente novamente apresentando um valor válido.")
+        raise ValueError()
+    except:
+        raise Exception()

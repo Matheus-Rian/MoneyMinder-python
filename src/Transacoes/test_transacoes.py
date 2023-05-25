@@ -36,24 +36,24 @@ def test_not_allow_add_transaction_with_existing_name():
 
 def test_get_transactions():
   transactions = makeSut()
-  assert objMock == transactions.get_items()
+  assert objMock == transactions.pegar_transacoes()
 
 def test_remove_by_name():
   transactions = makeSut()
-  transactions.removeByName(category, 'TV')
+  transactions.remover_pelo_nome(category, 'TV')
   assert transactions.size() == 1
 
 def test_remove_by_name_not_exists():
   transactions = makeSut()
-  v = transactions.removeByName(category, 'TV2')
-  assert v == 'Nome não existe'
+  v = transactions.remover_pelo_nome(category, 'TV2')
+  assert v == 'Nome não existe!'
 
 def test_update_by_name():
   transactions = makeSut()
-  transactions.updateByName(category, 'TV', {'name': 'TV', 'value': 1500})
-  assert objMockUpdated == transactions.get_items()
+  transactions.atualizar_pelo_nome(category, 'TV', {'name': 'TV', 'value': 1500})
+  assert objMockUpdated == transactions.pegar_transacoes()
 
 def test_update_by_name_not_exists():
   transactions = makeSut()
-  v = transactions.updateByName(category, 'TV2', {'name': 'TV2', 'value': 1500})
-  assert v == 'Nome não existe'
+  v = transactions.atualizar_pelo_nome(category, 'TV2', {'name': 'TV2', 'value': 1500})
+  assert v == 'Nome não existe!'

@@ -1,25 +1,34 @@
-import menu as mn
-import transactions.transactions as _
+import menu as m
 import Porquinho.porquinho as p
+import Transacoes.transacoes as t
 
-[type, option] = mn.menu_principal()
+while True:
+  try:
+    [tipo, operacao] = m.menu_principal()
+  except ValueError:
+    continue
+  except:
+    break
 
-transactions = _.Transactions()
-porquinho = p.Porquinho()
+  transactions = t.Transacoes()
+  porquinho = p.Porquinho()
 
-opcoes = {
-  'Transações': {
-    '1': transactions.get_items,
-    '2': transactions.add,
-    '3': transactions.updateByName,
-    '4': transactions.removeByName,
-  },
-  'Filtrar': {
-    '1': transactions.filter
-  },'Porquinho':{
+  opcoes = {
+    'Transações': {
+      '1': transactions.pegar_transacoes,
+      '2': transactions.adicionar,
+      '3': transactions.atualizar_pelo_nome,
+      '4': transactions.remover_pelo_nome,
+    },
+    'Filtrar': {
+      '1': transactions.filtrar
+    },
+    'Porquinho': {
       '1': porquinho.criar_porquinho,
+      '2': porquinho.update_valor,
+      '3': porquinho.visualizar_nomes,
+      '4': porquinho.remover_nome
+    }
   }
-}
-        #print("Digite o número da ação que deseja realizar: \n[1]Criar porquinho \n[2]Visualizar porquinho \n[3]Deletar porquinho \n")
 
-print(opcoes[type][option]())
+  print(opcoes[tipo][operacao]())
